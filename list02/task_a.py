@@ -3,7 +3,7 @@ frase = str(input())
 aliensDerrotados = 0
 
 # excecutando o codigo enquanto as regras de execucao sao validas
-while(frase != "O relógio descarregou!" and frase != "Por hoje já deu"):
+while frase != "O relógio descarregou!" and frase != "Por hoje já deu":
   aliensDerrotados += 1
   frase = str(input())
 
