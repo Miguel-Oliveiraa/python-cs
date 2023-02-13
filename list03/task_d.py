@@ -30,7 +30,7 @@ for i in range(0, tamanho):
     else:
         resultado.append(0)
 
-# criando uma string que contem todos os itens do array da forma que a questão quer receber
+# tratando o array para exibir da forma pedida
 nomeFinal = ""
 for i in range(0, len(resultado)):
   if i != len(resultado)-1:

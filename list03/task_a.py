@@ -35,5 +35,12 @@ while entradaUsuario != "ja temos nossa lista de suspeitos":
     print(*suspeitos, sep=' ')
   entradaUsuario = input()
 
+# tratando o array para exibir da forma pedida
+resultadoFinal = ""
+for i in range(0, len(suspeitos)):
+  if i != len(suspeitos)-1:
+    resultadoFinal += str(suspeitos[i]) + ' '
+  else:
+    resultadoFinal += str(suspeitos[i])
 print("O resultado final ficou assim:")
-print(*suspeitos, sep=' ')
+print(resultadoFinal)
