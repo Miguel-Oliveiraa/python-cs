@@ -17,7 +17,6 @@ for i in range(0, len(novaLista)):
                 erroDimensional += 1
             itensRepetidos.append(novaLista[i])
 
-print(itensRepetidos)
 # nomesRepetidos = []
 # for i in itensRepetidos:
 #     if i not in nomesRepetidos:
