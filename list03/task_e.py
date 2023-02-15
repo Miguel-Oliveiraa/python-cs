@@ -23,7 +23,7 @@ for i in range(0, len(novaLista)):
 #         nomesRepetidos.append(i)
 #         print(i)
         # print(f"Após análises, percebi que {i} foi coletado mais de uma vez...")
-
+# teste
 if itensRepetidos != []:
     maxcount = 0
     element_having_max_freq = 0
