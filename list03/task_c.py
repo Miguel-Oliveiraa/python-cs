@@ -20,7 +20,7 @@ for i in range (0, quantidadeBusca):
 
 # verificando para cada diario a ser discado
 for i in diariosBuscados:
-    # caso o diario esteja no array de diarios
+    # caso o diario esteja no array de diarios!
     if diarios.count(i)>0:
         print(f"Informacoes sobre {i} estao no Diario {numeroDiarios[diarios.index(i)]}")
     else:
