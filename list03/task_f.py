@@ -2,18 +2,26 @@ numeroLetras = int(input())
 
 mensagemDecodificada = ""
 for i in range(0, numeroLetras):
-    mensagemCodificada = input()
-    mensagemCodificada = mensagemCodificada.split(" ")
-    mensagemCodificada[1] = mensagemCodificada[1].split("-")
-    mensagemCodificada[0], mensagemCodificada[1][0], mensagemCodificada[1][1] = int(mensagemCodificada[0]), int(mensagemCodificada[1][0]), int(mensagemCodificada[1][1])
+    letraCodificada = input()
+
+    # transformando o input codificado em um array com o numero da sequencia de fibonacci e a posicao dos numeros
+    letraCodificada = letraCodificada.split(" ")
+    letraCodificada[1] = letraCodificada[1].split("-")
+    letraCodificada[0], letraCodificada[1][0], letraCodificada[1][1] = int(letraCodificada[0]), int(letraCodificada[1][0]), int(letraCodificada[1][1])
+
+    # calculando o numero da sequencia de fibonacci
     primeiroNumero = 0
     segundoNumero = 1
-    for j in range(1, mensagemCodificada[0]):
-        terceiroNumero = primeiroNumero+segundoNumero
-        primeiroNumero, segundoNumero = segundoNumero, terceiroNumero
-    terceiroNumero = str(terceiroNumero)
-    primeiroDigito = terceiroNumero[mensagemCodificada[1][0]]
-    segundoDigito = terceiroNumero[mensagemCodificada[1][1]]
+    for j in range(1, letraCodificada[0]):
+        resultadoFibonacci = primeiroNumero+segundoNumero
+        primeiroNumero, segundoNumero = segundoNumero, resultadoFibonacci
+
+    # pegando as posicoes pedidas
+    resultadoFibonacci = str(resultadoFibonacci)
+    primeiroDigito = resultadoFibonacci[letraCodificada[1][0]]
+    segundoDigito = resultadoFibonacci[letraCodificada[1][1]]
+
+    # concatenando e transformando em string
     codigo = primeiroDigito + segundoDigito
     mensagemDecodificada += chr(int(codigo))
 
