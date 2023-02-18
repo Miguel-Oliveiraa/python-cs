@@ -1,7 +1,7 @@
-quantidadeJogosPromocao = int(input())
+qtdJogosPromocao = int(input())
 
 # recebendo os nomes e numeros de sequencia n vezes
-for i in range(0, quantidadeJogosPromocao):
+for i in range(0, qtdJogosPromocao):
     nomeJogo = input()
     numeroSequencia = int(input())
     prequels = "2"

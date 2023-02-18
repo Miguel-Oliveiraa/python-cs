@@ -1,4 +1,4 @@
-# recebendo quantidade n de locais
+# recebendo qtd n de locais
 numeroLocais = int(input())
 
 # criando uma variavel para caso ocorra empate e uma variavel -1 para checar se existe uma pior nota ou nao

@@ -1,4 +1,4 @@
-quantidadeRodadas = int(input())
+qtdRodadas = int(input())
 
 # iniciando o saldo de cada um em 0
 saldoArtur = 0
@@ -7,7 +7,7 @@ saldoFrej = 0
 saldoMisheldon = 0
 
 # executando o codigo n vezes
-for i in range (1, quantidadeRodadas + 1):
+for i in range (1, qtdRodadas + 1):
     # recebendo inputs do apostador da rodada
     print(f"Rodada numero {i}")
     nomeJogador = input()

@@ -1,9 +1,9 @@
 letraSorteado = input()
-quantidadeAmigos = int(input())
+qtdAmigos = int(input())
 estadoPreferido = input()
 
 # recebendo nome e cidade dos amigos n vezes
-for i in range (0, quantidadeAmigos):
+for i in range (0, qtdAmigos):
     nomeAmigo = input()
     estadoAmigo = input()
 
@@ -17,16 +17,16 @@ for i in range (0, quantidadeAmigos):
     if i == 0:
         estadoEscolhido = estadoAmigo
         amigoEscolhido = nomeAmigo
-        quantidadesLetrasEscolhido = contadorLetraSorteada
-    # comparando a quantidade de letras sorteadas do nome atual com o vencedor
+        qtdsLetrasEscolhido = contadorLetraSorteada
+    # comparando a qtd de letras sorteadas do nome atual com o vencedor
     else:
-        if contadorLetraSorteada > quantidadesLetrasEscolhido:
+        if contadorLetraSorteada > qtdsLetrasEscolhido:
             estadoEscolhido = estadoAmigo
             amigoEscolhido = nomeAmigo
-            quantidadesLetrasEscolhido = contadorLetraSorteada
+            qtdsLetrasEscolhido = contadorLetraSorteada
 
 # comparando o estado vencedor com o estado preferido
 if estadoEscolhido == estadoPreferido:
-    print(f"UHUL!!! Victor vai começar por {estadoEscolhido} que é o estado que ele queria e ficara la por {quantidadesLetrasEscolhido} dias.")
+    print(f"UHUL!!! Victor vai começar por {estadoEscolhido} que é o estado que ele queria e ficara la por {qtdsLetrasEscolhido} dias.")
 else:
-    print(f"Eita!!! infelizmente, Victor terá que fazer uma viagem maior e começar pelo estado {estadoEscolhido} e ficara la por {quantidadesLetrasEscolhido} dias.")
+    print(f"Eita!!! infelizmente, Victor terá que fazer uma viagem maior e começar pelo estado {estadoEscolhido} e ficara la por {qtdsLetrasEscolhido} dias.")
