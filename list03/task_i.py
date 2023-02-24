@@ -6,6 +6,8 @@ mensagem = input()
 listaCodigos = []
 
 while mensagem != "Cansado":
+
+    # cria um array de arrays de numeros
     mensagem = mensagem.split(" ")
     for i in range(0, len(mensagem)):
         mensagem[i] = int(mensagem[i])
@@ -13,9 +15,14 @@ while mensagem != "Cansado":
     mensagem = input()
 
 
+
 climaValido = True
 if climaAtual == "Ensolarado":
+
+    # percorre o array de arrays
     for i in range(0, len(listaCodigos)):
+
+        # ordena os numeros do array interno
         for j in range(0, len(listaCodigos[i])):
             for k in range(0, len(listaCodigos[i])-j-1):
                 if listaCodigos[i][k] > listaCodigos[i][k+1]:
@@ -23,7 +30,11 @@ if climaAtual == "Ensolarado":
     print(f"Caramba! Finalmente organizamos a mensagem secreta do {nomeInimigo} com esse clima Ensolarado! Vamos nessa {nomeAliado}!")
 
 elif climaAtual == "Nublado":
+
+    # percorre o array de arrays
     for i in range(0, len(listaCodigos)):
+
+        # ordena os numeros do array interno
         for j in range(0, len(listaCodigos[i])):
             for k in range(0, len(listaCodigos[i])-j-1):
                 if listaCodigos[i][k] < listaCodigos[i][k+1]:
@@ -31,16 +42,27 @@ elif climaAtual == "Nublado":
     print(f"Ufa! Mesmo com o clima Nublado ainda desvendamos a mensagem do {nomeInimigo}! Vamos nessa {nomeAliado}!")
 
 elif climaAtual == "ChuvosoNormal":
+    # percorre o array de arrays
     for i in range(0, len(listaCodigos)):
-        for j in range(0, len(listaCodigos)-i-1):
+
+        # executa para todos os arrays que ainda faltam
+        for j in range(0, len(listaCodigos) - i - 1):
+
+            # compara a posicao k de um array com k do proximo array
             for k in range(0, len(listaCodigos[i])):
-                if listaCodigos[i][k] < listaCodigos[i+1][k]:
-                    listaCodigos[i][k], listaCodigos[i+1][k] = listaCodigos[i+1][k], listaCodigos[i][k]
+                if listaCodigos[j][k] < listaCodigos[i + 1][k]:
+                    listaCodigos[i][k], listaCodigos[i + 1][k] = listaCodigos[i + 1][k], listaCodigos[i][k]
     print(f"Nem mesmo a chuva vai nos parar de salvar o mundo! Desvendamos a mensagem do {nomeInimigo}! Vamos nessa {nomeAliado}!")
 
 elif climaAtual == "ChuvosoComRaio":
+
+    # percorre o array de arrays
     for i in range(0, len(listaCodigos)):
+
+        # executa para todos os arrays que ainda faltam
         for j in range(0, len(listaCodigos) - i - 1):
+
+            # compara a posicao k de um array com k do proximo array
             for k in range(0, len(listaCodigos[i])):
                 if listaCodigos[i][k] > listaCodigos[i + 1][k]:
                     listaCodigos[i][k], listaCodigos[i + 1][k] = listaCodigos[i + 1][k], listaCodigos[i][k]
