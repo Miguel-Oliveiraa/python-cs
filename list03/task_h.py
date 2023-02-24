@@ -1,4 +1,3 @@
-lanterna = True
 nomes = input()
 nomes = nomes.split(" ")
 
@@ -112,7 +111,6 @@ while mensagem != "END":
                     print(f"{nomeJogador} não possui os itens necessários para fazer essa tarefa! Colete mais itens e tente novamente.")
 
         elif acao == "desistiu":
-
             # procura o jogador e remove ele
             for i in range(0, len(inventarios)):
                 if inventarios[i][0] == nomeJogador:
