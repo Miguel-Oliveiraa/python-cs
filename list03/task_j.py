@@ -9,6 +9,10 @@ inicioSquad = inicioSquad.split(" ")
 coordenadaSquad = []
 for i in inicioSquad:
     coordenadaSquad.append(int(i))
+if coordenadaSquad[0] == 7:
+    movimentacaoSquad = "esquerda"
+else:
+    movimentacaoSquad = "direita"
 
 sucesso = True
 for m in range(0, 3):
@@ -81,55 +85,99 @@ for m in range(0, 3):
         distanciaVerticalPoliciais = coordenadasObjetivo[1] - coordenadaPoliciais[1]
         distanciaHorizontalPoliciais = coordenadasObjetivo[0] - coordenadaPoliciais[0]
 
+    # movimentacao
     while coordenada[1] != coordenadasObjetivo[1]:
+        if not sucesso:
+            break
         if distanciaVertical > 0:
             coordenada[1] = coordenada[1]+1
         else:
             coordenada[1] = coordenada[1]-1
 
-        if m == 2:
-            if distanciaHorizontalPoliciais > 0:
-                coordenadaPoliciais[0] = coordenadaPoliciais[0] + 1
+        if movimentacaoSquad == "direita":
+            if coordenadaSquad[0] == 7:
+                movimentacaoSquad = "esquerda"
             else:
-                coordenadaPoliciais[0] = coordenadaPoliciais[0] - 1
+                coordenadaSquad[0] = coordenadaSquad[0]+1
 
-        if coordenada[0] == coordenadaSquad[0] and coordenada[1] == coordenadaSquad[1]:
-            sucesso = False
-            break
+        if movimentacaoSquad == "esquerda":
+            if coordenadaSquad[0] == 0:
+                movimentacaoSquad = "direita"
+                coordenadaSquad[0] = coordenadaSquad[0] + 1
+            else:
+                coordenadaSquad[0] = coordenadaSquad[0]-1
+
+        if m == 2:
+            if coordenadaPoliciais[0] != coordenadasObjetivo[0]:
+                if distanciaHorizontalPoliciais > 0:
+                    coordenadaPoliciais[0] = coordenadaPoliciais[0] + 1
+                else:
+                    coordenadaPoliciais[0] = coordenadaPoliciais[0] - 1
+            elif coordenadaPoliciais[1] != coordenadasObjetivo[1]:
+                if distanciaVerticalPoliciais > 0:
+                    coordenadaPoliciais[1] = coordenadaPoliciais[1] + 1
+                else:
+                    coordenadaPoliciais[1] = coordenadaPoliciais[1] - 1
 
         if m == 2:
             if coordenada[0] == coordenadaPoliciais[0] and coordenada[1] == coordenadaPoliciais[1]:
                 sucesso = False
-                print("Parado! Está cercado pelo Esquadrão De Segurança para Evitar o Paradoxo do Tempo. O que quer que você diga pode ou já foi usado contra você no Tribunal do Futuro.")
-                print("Talvez não foi uma boa ideia ajudar o Ford…")
                 break
+
+        if coordenada[0] == coordenadaSquad[0] and coordenada[1] == coordenadaSquad[1]:
+            print("Parado! Está cercado pelo Esquadrão De Segurança para Evitar o Paradoxo do Tempo. O que quer que você diga pode ou já foi usado contra você no Tribunal do Futuro.")
+            print("Talvez não foi uma boa ideia ajudar o Ford…")
+            sucesso = False
+            break
 
     if not sucesso:
         break
 
+    # movimentacao
     distanciaHorizontal = coordenadasObjetivo[0] - coordenada[0]
     while coordenada[0] != coordenadasObjetivo[0]:
+        if not sucesso:
+            break
         if distanciaHorizontal > 0:
             coordenada[0] = coordenada[0] + 1
         else:
             coordenada[0] = coordenada[0] - 1
 
-        if m == 2:
-            if distanciaVerticalPoliciais > 0:
-                coordenadaPoliciais[1] = coordenadaPoliciais[1] + 1
+        if movimentacaoSquad == "direita":
+            if coordenadaSquad[0] == 7:
+                movimentacaoSquad = "esquerda"
             else:
-                coordenadaPoliciais[1] = coordenadaPoliciais[1] - 1
+                coordenadaSquad[0] = coordenadaSquad[0] + 1
 
-        if coordenada[0] == coordenadaSquad[0] and coordenada[1] == coordenadaSquad[1]:
-            sucesso = False
-            break
+        if movimentacaoSquad == "esquerda":
+            if coordenadaSquad[0] == 0:
+                movimentacaoSquad = "direita"
+                coordenadaSquad[0] = coordenadaSquad[0] + 1
+            else:
+                coordenadaSquad[0] = coordenadaSquad[0] - 1
+
+        if m == 2:
+            if coordenadaPoliciais[0] != coordenadasObjetivo[0]:
+                if distanciaHorizontalPoliciais > 0:
+                    coordenadaPoliciais[0] = coordenadaPoliciais[0] + 1
+                else:
+                    coordenadaPoliciais[0] = coordenadaPoliciais[0] - 1
+            elif coordenadaPoliciais[1] != coordenadasObjetivo[1]:
+                if distanciaVerticalPoliciais > 0:
+                    coordenadaPoliciais[1] = coordenadaPoliciais[1] + 1
+                else:
+                    coordenadaPoliciais[1] = coordenadaPoliciais[1] - 1
 
         if m == 2:
             if coordenada[0] == coordenadaPoliciais[0] and coordenada[1] == coordenadaPoliciais[1]:
                 sucesso = False
-                print("Parado! Está cercado pelo Esquadrão De Segurança para Evitar o Paradoxo do Tempo. O que quer que você diga pode ou já foi usado contra você no Tribunal do Futuro.")
-                print("Talvez não foi uma boa ideia ajudar o Ford…")
                 break
+
+        if coordenada[0] == coordenadaSquad[0] and coordenada[1] == coordenadaSquad[1]:
+            print("Parado! Está cercado pelo Esquadrão De Segurança para Evitar o Paradoxo do Tempo. O que quer que você diga pode ou já foi usado contra você no Tribunal do Futuro.")
+            print("Talvez não foi uma boa ideia ajudar o Ford…")
+            sucesso = False
+            break
 
     if not sucesso:
         break
