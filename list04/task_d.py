@@ -1,83 +1,83 @@
-def calcularDemonio(demonios):
-  posicao = len(demonios) - 1
-  return posicao
+def lutas(demonios, vidaDenji, vidaDemonio, initVidaDemonio, ataqueDenji, ataqueDemonio, initAtaqueDemonio, contadorMortos, duplicou):
 
-def verificaBonus(vidaDenji, ataqueDenji, vidaDemonios, ataqueDemonios, qtdDemonios, mensagem):
-  if mensagem == "Denji ganhou um beijo de Makima":
+  # imprime informacoes dos lutadores
+  print(f'DENJI')
+  print(f'Vida: {vidaDenji}')
+  print(f'Ataque atual: {ataqueDenji}')
+
+  print(f'DEMÔNIO')
+  print(f'Vida: {vidaDemonio}')
+  print(f'Ataque atual: {ataqueDemonio}')
+
+  # recebe os bonus
+  entrada_denji = input()
+  if (entrada_denji == 'Denji ganhou um beijo de Makima'):
     vidaDenji += 50
-  elif mensagem == "Pochita chegou para a batalha!":
+  elif (entrada_denji == 'Pochita chegou para a batalha!'):
     ataqueDenji += 50
-  elif mensagem == "Makima disse que ME AMA!!!":
-    vidaDenji *= 1.5
-  elif mensagem == "O demônio achou um escudo no chão!":
-    vidaDemonios += 25
-  elif mensagem == "Onde ele arrumou essa espada?":
-    ataqueDemonios += 20
-  elif mensagem == "Como assim ele se duplicou??!!":
-    vidaDemonios *= 2
-    ataqueDemonios *= 2
-    qtdDemonios *= 2
-  return vidaDenji, ataqueDenji, vidaDemonios, ataqueDemonios
+  elif (entrada_denji == 'Makima disse que ME AMA!!!'):
+    vidaDenji = int(vidaDenji * 1.5)
+  entrada_demon = input()
+  if (entrada_demon == 'O demônio achou um escudo no chão!'):
+    vidaDemonio += 25
+  elif (entrada_demon == 'Onde ele arrumou essa espada?'):
+    ataqueDemonio += 20
+  elif (entrada_demon == 'Como assim ele se duplicou??!!'):
+    duplicou = True
+    vidaDemonio = 2 * vidaDemonio
+    ataqueDemonio = 2 * ataqueDemonio
 
-def batalha(vidaDenji, ataqueDenji, demonios, posicaoDemonio, qtdDemonios):
-  if (demonios[posicaoDemonio][0] - ataqueDenji) > 0:
-    if qtdDemonios != 1:
-      print("DENJI")
-      print(f"Vida: {vidaDenji}")
-      print(f"Ataque atual: {ataqueDenji}")
-      print("DEMÔNIO")
-      print(f"Vida: {demonios[posicaoDemonio-1][0]}")
-      print(f"Ataque atual: {demonios[posicaoDemonio-1][1]}")
+  # verifica se o demonio morreu
+  vidaDemonio -= ataqueDenji
+  if (vidaDemonio <= 0):
+    demonios -= 1
+    if (duplicou == True):
+      contadorMortos += 2
+      duplicou = False
+    else:
+      contadorMortos += 1
+
+    if (demonios > 0):
+      print('Matei um!!!')
+      vidaDemonio = initVidaDemonio
+      ataqueDemonio = initAtaqueDemonio
+      if (demonios > 0):
+        vidaDenji -= ataqueDemonio
   else:
-    print("DENJI")
-    print(f"Vida: {vidaDenji}")
-    print(f"Ataque atual: {ataqueDenji}")
-    print("DEMÔNIO")
-    print(f"Vida: {demonios[posicaoDemonio][0]}")
-    print(f"Ataque atual: {demonios[posicaoDemonio][1]}")
-  demonios[posicaoDemonio][0] -= ataqueDenji
-  vidaDenji -= demonios[posicaoDemonio][1]
-  return vidaDenji, demonios[posicaoDemonio][0]
+    if (demonios > 0):
+      vidaDenji -= ataqueDemonio
 
-qtdDemonios = int(input())
-demoniosMortos = 0
-demonios = []
+  return demonios, vidaDenji, vidaDemonio, initVidaDemonio, ataqueDenji, ataqueDemonio, initAtaqueDemonio, contadorMortos, duplicou
 
-if qtdDemonios>0:
-  vidaDenji = int(input())
-  vidaDemonios = int(input())
-  ataqueDenji = int(input())
-  ataqueDemonios = int(input())
 
-  for i in range(qtdDemonios):
-    demonios.append([vidaDemonios, ataqueDemonios])
+# variaveis auxiliares
+duplicou = False
+demonios = int(input())
+qtdInicialDemonios = demonios
+contadorMortos = 0
+terminou = False
 
-  while len(demonios)>0 and vidaDenji>0:
-    posicaoDemonio = calcularDemonio(demonios)
-
-    # batalha
-    vidaDenji, demonios[posicaoDemonio][0] = batalha(vidaDenji, ataqueDenji, demonios, posicaoDemonio, len(demonios))
-    # verifica se o demonio morreu
-    if demonios[posicaoDemonio][0] <= 0:
-      if len(demonios) != 1:
-        print("Matei um!!!")
-      demonios.pop(posicaoDemonio)
-      posicaoDemonio -= 1
-      demoniosMortos += 1
-
-    # verificacao de bonus
-    acaoDenji = input()
-    vidaDenji, ataqueDenji, demonios[posicaoDemonio][0], demonios[posicaoDemonio][1] = verificaBonus(vidaDenji, ataqueDenji, demonios[posicaoDemonio][0], demonios[posicaoDemonio][1], qtdDemonios, acaoDenji)
-    acaoDemonio = input()
-    vidaDenji, ataqueDenji, demonios[posicaoDemonio][0], demonios[posicaoDemonio][1] = verificaBonus(vidaDenji, ataqueDenji, demonios[posicaoDemonio][0], demonios[posicaoDemonio][1], qtdDemonios, acaoDemonio)
-
+if (demonios == 0):
+  print('Uhuuul um dia só para relaxar!')
+  terminou = True
 else:
-  print("Uhuuul um dia só para relaxar!")
+  # inputs iniciais
+  vidaDenji = int(input())
+  vidaDemonio = int(input())
+  initVidaDemonio = vidaDemonio
+  ataqueDenji = int(input())
+  ataqueDemonio = int(input())
+  initAtaqueDemonio = ataqueDemonio
 
-if vidaDenji<=0:
-  print("Infelizmente Denji foi de comes e bebes :(")
-elif len(demonios)==0:
-  if demoniosMortos == qtdDemonios:
-    print("Ufa, agora posso descansar em paz!")
+  # executa enquanto nenhum dos dois morrer
+  while (demonios > 0 and vidaDenji > 0):
+    demonios, vidaDenji, vidaDemonio, initVidaDemonio, ataqueDenji, ataqueDemonio, initAtaqueDemonio, contadorMortos, duplicou = lutas(demonios, vidaDenji, vidaDemonio, initVidaDemonio, ataqueDenji, ataqueDemonio, initAtaqueDemonio, contadorMortos, duplicou)
+
+
+if (terminou == False):
+  if (vidaDenji <= 0):
+    print('Infelizmente Denji foi de comes e bebes :(')
+  elif (contadorMortos > qtdInicialDemonios):
+    print('Foi mais do que eu esperava mas finalmente terminei…')
   else:
-    print("Foi mais do que eu esperava mas finalmente terminei…")
+    print('Ufa, agora posso descansar em paz!')
