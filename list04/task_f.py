@@ -30,12 +30,20 @@ for i in range(0, quantidade_ordens):
       else:
         alocarPrisioneiro(celas, posicao, nomePrisioneiro, quantidade_celas)
         qtdPrisioneiros += 1
-  else:
-    if nomePrisioneiro not in celas:
-      print("NAO EXISTE")
+  elif comando == "REMOVER":
+    if celas[posicao] == nomePrisioneiro:
+      celas[posicao] = " "
+      qtdPrisioneiros -= 1
     else:
+      c = 0
+      while celas[posicao] != " " and celas[posicao] != nomePrisioneiro and c != (quantidade_celas):
+        posicao = (posicao+1)%quantidade_celas
+        c += 1
       if celas[posicao] == nomePrisioneiro:
         celas[posicao] = " "
+        qtdPrisioneiros -= 1
+      else:
+        print("NAO EXISTE")
 
 ordemPrisioneiros = []
 for i in range(len(celas)):
