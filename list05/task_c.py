@@ -15,6 +15,7 @@ def comprimirMensagem(mensagem):
   mensagemFinal += f"{contador}" + mensagem[i+1]
   contador = 1
 
+  # somando todos numeros da string
   for i in mensagemFinal:
     if ord(i) >= 48 and ord(i) <= 57:
       resultadoSoma = resultadoSoma + int(i)
@@ -30,6 +31,8 @@ def comprimirMensagem(mensagem):
     resposta = "1v5a1 1e2s1t4u3d3a3r1 1r1a1p3a3z"
   elif resultadoSoma > 40:
     resposta = "3e1s1t5u1d1a1 1n2a1o1 1p1r3a1 1t2u1 1v4e1r"
+
+  # retornando mensagem comprimida e resposta do chatGPT
   return mensagemFinal, resposta
 
 def descomprimirResposta(mensagem):
@@ -42,6 +45,7 @@ def descomprimirResposta(mensagem):
 def ajudaChat():
   mensagem = input()
   while mensagem != "Não tô entendendo nada":
+    # comprimindo a mensagem e imprimindo mensagem do usuario e chatGPT
     mensagemComprimida, resposta = comprimirMensagem(mensagem)
     print(f"usuário:{mensagemComprimida}")
     print(f"ChatGPT:{resposta}")
@@ -55,6 +59,7 @@ while mensagem != "Preciso parar de usar o ChatGPT":
   if mensagem == "Vou pedir ajuda pro meu amigo ChatGPT":
     resposta = ajudaChat()
   elif mensagem == "Qual era a tradução?":
+    # verificando se existiu resposta
     if resposta == "naoExiste":
       print("Não tem nada pra traduzir")
     else:
