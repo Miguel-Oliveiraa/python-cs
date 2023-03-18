@@ -8,4 +8,5 @@ def inverterString(codigo, contador):
     else:
       return codigo[contador] + inverterString(codigo, contador-1)
 
+# imprimindo resultado
 print(inverterString(codigo, len(codigo)-1))
