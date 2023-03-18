@@ -1,26 +1,28 @@
 def comprimirMensagem(mensagem):
-  contador = 1
-  mensagemFinal = ""
-  # iterando sobre a string
-  for i in range(0, len(mensagem)-1):
-    # contando repeticoes
-    if mensagem[i] == mensagem[i+1]:
-      contador += 1
-    # concatenando o contador com a letra quando nao tem repeticao
-    else:
-      mensagemFinal += f"{contador}" + mensagem[i]
-      contador = 1
-  # concatenando a ultima string caso ela esteja isolada
-  mensagemFinal += f"{contador}" + mensagem[i+1]
-  contador = 1
+  # caso base é a string vazia
+  if not mensagem:
+    return ""
 
-  return mensagemFinal
+  char = mensagem[0]
+  contador = 1
+  i = 1
+  # conta quantas vezes a letra foi repetida
+  while i < len(mensagem) and mensagem[i] == char:
+    contador += 1
+    i += 1
+
+  # retorna o numero de letras repetidas + a letra e executa a funcao para o resto da string novamente
+  return str(contador) + char + comprimirMensagem(mensagem[i:])
+
 
 def descomprimirResposta(mensagem, contador, tamanho):
+  # caso base é a ultima string com codigo
   if contador == tamanho-2:
+    # retorna o char n vezes
     return mensagem[contador+1]*int(mensagem[contador])
   else:
     return mensagem[contador+1]*int(mensagem[contador]) + descomprimirResposta(mensagem, contador + 2, tamanho)
+
 
 def ajudaChat():
   mensagem = input()
@@ -62,6 +64,6 @@ while mensagem != "Preciso parar de usar o ChatGPT":
     if resposta == "naoExiste":
       print("Não tem nada pra traduzir")
     else:
-      resultado = descomprimirResposta(resposta,0, len(resposta))
+      resultado = descomprimirResposta(resposta, 0, len(resposta))
       print(f"Descobri! É: {resultado}, tá de brincadeira né?")
   mensagem = input()
