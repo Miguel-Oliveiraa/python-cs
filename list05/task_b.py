@@ -1,3 +1,4 @@
+# recebe mensagem criptografada
 codigo = input()
 
 def inverterString(codigo, contador):
