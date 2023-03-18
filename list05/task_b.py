@@ -1,6 +1,7 @@
 # recebe mensagem criptografada
 codigo = input()
 
+# invertendo a string recursivamente
 def inverterString(codigo, contador):
     if contador == 0:
       return codigo[contador]
