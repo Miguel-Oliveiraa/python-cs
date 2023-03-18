@@ -9,7 +9,7 @@ def comprimirMensagem(mensagem):
       mensagemFinal += f"{contador}" + mensagem[i]
       resultadoSoma += contador
       contador = 1
-  mensagemFinal += f"{contador}" + mensagem[i]
+  mensagemFinal += f"{contador}" + mensagem[i+1]
   resultadoSoma += contador
   contador = 1
 
