@@ -37,7 +37,9 @@ def comprimirMensagem(mensagem):
 
 def descomprimirResposta(mensagem):
   resultado = ""
+  # iterando pela string 2 a 2, pois temos na string a ordem, numero de letras + letra
   for i in range(0, len(mensagem)-1, 2):
+    # de acordo com o numero n concatenando a letra n vezes na resposta
     for j in range(int(mensagem[i])):
       resultado += mensagem[i+1]
   return resultado
