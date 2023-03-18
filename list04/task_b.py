@@ -8,7 +8,7 @@ def probabilidadebilidade(nome):
     if (nome == 'Makima'):
       print(f"Woof Woof")
       probabilidade = int(input())
-      print(f"Beleza {nome}!! Essa deve ser molezinha!")
+      print(f"Beleza {nome}!! Essa é uma boa pretendente!")
       qtdVivo += 1
     else:
       probabilidade = int(input())
@@ -21,7 +21,7 @@ def probabilidadebilidade(nome):
         else:
           lista += f'\nnome: {nome} - chances de morrer: {probabilidade}%'
       elif (probabilidade <= 50):
-        print(f"Beleza {nome}!! Essa deve ser molezinha!")
+        print(f"Beleza {nome}!! Essa é uma boa pretendente!")
         qtdVivo += 1
         if (lista == ''):
           lista += f'nome: {nome} - chances de morrer: {probabilidade}%'
