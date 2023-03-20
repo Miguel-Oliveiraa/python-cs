@@ -1,9 +1,9 @@
 def sequenciarIntervalos(numeros):
-  if not numeros:
-    return ""
+  # inicia um numero inicial
   inicio = numeros[0]
   final = inicio
   i = 1
+  # executa até percorrer todo array ou o numero parar
   while i < len(numeros) and numeros[i] == final + 1:
     final = numeros[i]
     i += 1
@@ -13,6 +13,7 @@ def sequenciarIntervalos(numeros):
     stringDistancia = f"[{inicio}-{final}]"
   if i < len(numeros):
     return stringDistancia + ", " + sequenciarIntervalos(numeros[i:])
+  # condição de parada, i = tamanho do array
   else:
     return stringDistancia
 
