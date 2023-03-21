@@ -83,3 +83,84 @@ for i in range(tamanhoMatriz):
 
 
 print(verificaVilao(contadorA,contadorR,contadorL,contadorE,contadorQ,contadorU,contadorI,contadorN,contadorP,contadorG,contadorM,contadorJ,contadorO,contadorK, contadorS,contadorT,contadorH,contadorD,contadorC))
+
+
+# ///////////////////////////
+def buscar(linha, palavra):
+  # procurando a primeira letra da palavra
+  for i in range(len(linha)):
+    for j in range(len(linha[i])):
+      if (linha[i][j] == palavra[0]):
+        # se encontrou
+        if (buscar_ao_redor(linha, palavra, i, j)):
+          return True
+  # se não encontrou
+  return False
+
+
+def buscar_ao_redor(linha, palavra, i, j):
+  # se a palavra foi encontrada
+  if (len(palavra) == 0):
+    return True
+
+  # se a posição atual na linha contém a próxima letra da palavra
+  if (i < 0 or i >= len(linha) or j < 0 or j >= len(linha[i]) or linha[i][j] != palavra[0]):
+    return False
+
+  # marca a posição atual
+  linha[i][j] = '*'
+
+  # verifica baixo
+  if (buscar_ao_redor(linha, palavra[1:], i + 1, j)):
+    return True
+  # verifica cima
+  if (buscar_ao_redor(linha, palavra[1:], i - 1, j)):
+    return True
+  # verifica direita
+  if (buscar_ao_redor(linha, palavra[1:], i, j + 1)):
+    return True
+  # verifica esquerda
+  if (buscar_ao_redor(linha, palavra[1:], i, j - 1)):
+    return True
+  # verifica baixo-direita
+  if (buscar_ao_redor(linha, palavra[1:], i + 1, j + 1)):
+    return True
+  # verifica baixo-esquerda
+  if (buscar_ao_redor(linha, palavra[1:], i + 1, j - 1)):
+    return True
+  # verifica cima-direita
+  if (buscar_ao_redor(linha, palavra[1:], i - 1, j + 1)):
+    return True
+  # verifica cima-esquerda
+  if (buscar_ao_redor(linha, palavra[1:], i - 1, j - 1)):
+    return True
+
+  # se a palavra não pode ser formada retorna False
+  linha[i][j] = palavra[0]
+  return False
+
+
+lista = []
+n = int(input())
+lista = []
+for i in range(n):
+  sequencia = input()
+  sequencia = sequencia.split(" ")
+  lista.append(sequencia)
+
+if (buscar(lista, 'PINGUIM')):
+  print(f'Isso!!! Encontramos uma pista, Pinguim está junto com o Charada.')
+elif ((lista, 'CHARADA')):
+  print(f'Isso!!! Encontramos uma pista, mas somente o Charada está envolvido.')
+elif (buscar(lista, 'ARLEQUINA')):
+  print(f'Isso!!! Encontramos uma pista, Arlequina está junto com o Charada.')
+elif (buscar(lista, 'JOKER')):
+  print(f'Isso!!! Encontramos uma pista, Joker está junto com o Charada.')
+elif (buscar(lista, 'ESPANTALHO')):
+  print(f'Isso!!! Encontramos uma pista, Espantalho está junto com o Charada.')
+elif (buscar(lista, 'DUASCARAS')):
+  print(f'Isso!!! Encontramos uma pista, Duas Caras está junto com o Charada.')
+elif (buscar(lista, 'REIDOSCONDIMENTOS')):
+  print(f'Isso!!! Encontramos uma pista, Rei Dos Condimentos está junto com o Charada.')
+else:
+  print('Poxa... acho que seguimos uma pista falsa.')
