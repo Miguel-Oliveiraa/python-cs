@@ -1,3 +1,4 @@
+# transforma no formato 0-24
 def transformaHora(numero, sufixo):
   if numero == 0:
     return False
@@ -26,11 +27,12 @@ def calcProbabilidade(hora, qtdPessoas):
       return calcProbabilidade((hora - 1)%24, qtdPessoas) + calcProbabilidade((hora - 1)%24, qtdPessoas) % 10
 
 
+# recebe os inputs
 horario = input().split(" ")
 horario[0] = int(horario[0])
 qtdPessoas = int(input())
-
 hora = transformaHora(horario[0], horario[1])
+
 
 if hora and qtdPessoas >= 0:
   probabilidade = calcProbabilidade(hora, qtdPessoas)
