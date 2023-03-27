@@ -5,10 +5,12 @@ def sequenciarIntervalos(numeros):
   final = inicio
   i = 1
 
+  # trocar esse while por uma recursão
+
   # executa até percorrer tudo ou o numero[i] ser diferente de numero[i+1]
-  while i < len(numeros) and numeros[i] == final + 1:
-    final = numeros[i]
-    i += 1
+  # while i < len(numeros) and numeros[i] == final + 1:
+  #   final = numeros[i]
+  #   i += 1
 
   # concatena o numero sozinho ou o intervalo
   if inicio == final:
