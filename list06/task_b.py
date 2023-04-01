@@ -15,8 +15,8 @@ def main():
 
   # armazena nome, situacao e uma tupla de amigos do pet no dict
   for i in range(numeroPets):
-    linha = input().split(", ")
-    dictPets["nome"].append(linha[0]), dictPets["situacao"].append(linha[1]),  dictPets["amigos"].append(tuple(linha[2:len(linha)]))
+    dados = input().split(", ")
+    dictPets["nome"].append(dados[0]), dictPets["situacao"].append(dados[1]),  dictPets["amigos"].append(tuple(dados[2:len(dados)]))
 
 
   petsBagunceiros = []
