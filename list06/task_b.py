@@ -6,7 +6,7 @@ for i in range(numeroPets):
 
 petsAgitados = []
 for i in range(len(dictPets["situacao"])):
-  if dictPets["situacao"][i] == "agitado" and 1 < len(dictPets["amigos"][i]) <= 3:
+  if (dictPets["situacao"][i] == "agitado" and len(dictPets["amigos"][i]) <= 3) or len(dictPets["amigos"][i]) == 1:
     petsAgitados.append(dictPets["nome"][i])
 
 if not petsAgitados:
