@@ -1,5 +1,7 @@
 numeroPets = int(input())
 dictPets = {"nome": [], "situacao": [],"amigos": []}
+
+# armazena nome, situacao e uma tupla de amigos do pet no dict
 for i in range(numeroPets):
   linha = input().split(", ")
   dictPets["nome"].append(linha[0]), dictPets["situacao"].append(linha[1]),  dictPets["amigos"].append(tuple(linha[2:len(linha)]))
