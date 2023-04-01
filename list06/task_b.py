@@ -1,12 +1,12 @@
-def formataListaPets(lista):
+def formataListaPets(listaNomes):
   listaPets = ""
-  for i in range(len(lista)):
-    if i == len(lista) - 1:
-      listaPets += " e " + lista[i]
+  for i in range(len(listaNomes)):
+    if i == len(listaNomes) - 1:
+      listaPets += " e " + listaNomes[i]
     elif i == 0:
-      listaPets += lista[i]
+      listaPets += listaNomes[i]
     else:
-      listaPets += ", " + lista[i]
+      listaPets += ", " + listaNomes[i]
   return listaPets
 
 def main():
@@ -16,7 +16,7 @@ def main():
   # armazena nome, situacao e uma tupla de amigos do pet no dict
   for i in range(numeroPets):
     dados = input().split(", ")
-    dicionarioPets["nome"].append(dados[0]), dicionarioPets["situacao"].append(dados[1]),  dicionarioPets["amigos"].append(tuple(dados[2:len(dados)]))
+    dicionarioPets["nome"].append(dados[0]), dicionarioPets["situacao"].append(dados[1]), dicionarioPets["amigos"].append(tuple(dados[2:len(dados)]))
 
 
   petsBagunceiros = []
