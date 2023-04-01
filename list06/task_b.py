@@ -11,20 +11,20 @@ def formataListaPets(lista):
 
 def main():
   numeroPets = int(input())
-  dictPets = {"nome": [], "situacao": [],"amigos": []}
+  dicionarioPets = {"nome": [], "situacao": [],"amigos": []}
 
   # armazena nome, situacao e uma tupla de amigos do pet no dict
   for i in range(numeroPets):
     dados = input().split(", ")
-    dictPets["nome"].append(dados[0]), dictPets["situacao"].append(dados[1]),  dictPets["amigos"].append(tuple(dados[2:len(dados)]))
+    dicionarioPets["nome"].append(dados[0]), dicionarioPets["situacao"].append(dados[1]),  dicionarioPets["amigos"].append(tuple(dados[2:len(dados)]))
 
 
   petsBagunceiros = []
 
   # verifica os animais que bagucam e coloca na lista
-  for i in range(len(dictPets["situacao"])):
-    if (dictPets["situacao"][i] == "agitado" and len(dictPets["amigos"][i]) <= 3) or len(dictPets["amigos"][i]) == 1:
-      petsBagunceiros.append(dictPets["nome"][i])
+  for i in range(len(dicionarioPets["situacao"])):
+    if (dicionarioPets["situacao"][i] == "agitado" and len(dicionarioPets["amigos"][i]) <= 3) or len(dicionarioPets["amigos"][i]) == 1:
+      petsBagunceiros.append(dicionarioPets["nome"][i])
 
 
   if not petsBagunceiros:
