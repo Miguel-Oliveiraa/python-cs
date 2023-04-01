@@ -1,27 +1,37 @@
-numeroPets = int(input())
-dictPets = {"nome": [], "situacao": [],"amigos": []}
-
-# armazena nome, situacao e uma tupla de amigos do pet no dict
-for i in range(numeroPets):
-  linha = input().split(", ")
-  dictPets["nome"].append(linha[0]), dictPets["situacao"].append(linha[1]),  dictPets["amigos"].append(tuple(linha[2:len(linha)]))
-
-petsAgitados = []
-for i in range(len(dictPets["situacao"])):
-  if (dictPets["situacao"][i] == "agitado" and len(dictPets["amigos"][i]) <= 3) or len(dictPets["amigos"][i]) == 1:
-    petsAgitados.append(dictPets["nome"][i])
-
-if not petsAgitados:
-  print("Todos estão se divertindo tranquilamente! Os queridos cuidadores podem relaxar!")
-elif len(petsAgitados) == 1:
-  print(f"Apenas {petsAgitados[0]} está querendo bagunçar, deem carinho e atenção imediatamente!")
-else:
+def formataListaPets(lista):
   listaPets = ""
-  for i in range(len(petsAgitados)):
-    if i == len(petsAgitados)-1:
-      listaPets += " e " + petsAgitados[i]
+  for i in range(len(lista)):
+    if i == len(lista) - 1:
+      listaPets += " e " + lista[i]
     elif i == 0:
-      listaPets += petsAgitados[i]
+      listaPets += lista[i]
     else:
-      listaPets += ", " + petsAgitados[i]
-  print(f"Vai ser um trabalho difícil, mas {listaPets} podem acabar atrapalhando os alunos do CIn!")
+      listaPets += ", " + lista[i]
+  return listaPets
+
+def main():
+  numeroPets = int(input())
+  dictPets = {"nome": [], "situacao": [],"amigos": []}
+
+  # armazena nome, situacao e uma tupla de amigos do pet no dict
+  for i in range(numeroPets):
+    linha = input().split(", ")
+    dictPets["nome"].append(linha[0]), dictPets["situacao"].append(linha[1]),  dictPets["amigos"].append(tuple(linha[2:len(linha)]))
+
+
+  petsBagunceiros = []
+
+  # verifica os animais que bagucam e coloca na lista
+  for i in range(len(dictPets["situacao"])):
+    if (dictPets["situacao"][i] == "agitado" and len(dictPets["amigos"][i]) <= 3) or len(dictPets["amigos"][i]) == 1:
+      petsBagunceiros.append(dictPets["nome"][i])
+
+
+  if not petsBagunceiros:
+    print("Todos estão se divertindo tranquilamente! Os queridos cuidadores podem relaxar!")
+  elif len(petsBagunceiros) == 1:
+    print(f"Apenas {petsBagunceiros[0]} está querendo bagunçar, deem carinho e atenção imediatamente!")
+  else:
+    print(f"Vai ser um trabalho difícil, mas {formataListaPets(petsBagunceiros)} podem acabar atrapalhando os alunos do CIn!")
+
+main()
