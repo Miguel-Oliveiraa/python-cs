@@ -18,7 +18,6 @@ def imprimirResultado(dicionarioDogs):
 def calcularMedia(listaStrings):
   for i in range(len(listaStrings)):
     listaStrings[i] = float(listaStrings[i])
-  # mediaFinal = "{:.2f}".format((listaStrings[0] + listaStrings[1] + listaStrings[2])/3)
   mediaFinal = format((listaStrings[0] + listaStrings[1] + listaStrings[2])/3, ".2f")
   return mediaFinal
 

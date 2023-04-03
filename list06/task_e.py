@@ -1,0 +1,1 @@
+maximoEnergia = int(input())
