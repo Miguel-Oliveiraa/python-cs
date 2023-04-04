@@ -1,6 +1,5 @@
 def verificaInimigos(animais, animaisEscolhidos):
   inimigos = False
-  animaisEscolhidos = sorted(animaisEscolhidos)
   for i in animaisEscolhidos:
     for j in animais[i]["inimigos"]:
       if j in animaisEscolhidos:
