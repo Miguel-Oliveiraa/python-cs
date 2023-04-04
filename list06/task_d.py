@@ -42,8 +42,7 @@ def main():
   }
 
   animaisEscolhidos = input().split(" e ")
-  recemNascido = input()
-  recemNascido = True if recemNascido == "sim" else False
+  recemNascido = True if input() == "sim" else False
   animaisInvalidos = verificaAnimais(animaisEscolhidos)
 
   if animaisInvalidos == []:
