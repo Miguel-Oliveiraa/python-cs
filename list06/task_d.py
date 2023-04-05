@@ -5,11 +5,6 @@ def verificaInimigos(animais, animaisEscolhidos):
           if j in animais[i]["inimigos"]:
               print(f"Sérgio, o(a) {i} tem o(a) {j} como inimigo. Não é possível adotá-los juntos, a não ser que sejam recém nascidos")
               inimigos = True
-  #   for j in animais[i]["inimigos"]:
-  #     if j in animaisEscolhidos:
-  #       inimigos = True
-  #       print(
-  #         f"Sérgio, o(a) {i} tem o(a) {j} como inimigo. Não é possível adotá-los juntos, a não ser que sejam recém nascidos")
   return inimigos
 
 
@@ -20,6 +15,7 @@ def imprimeNecessidades(animais, animaisEscolhidos, recemNascido):
   else:
     print("Segue aqui as necessidades dos animais:")
 
+  # imprime as necessidades do animais
   for i in animaisEscolhidos:
     print(f"As necessidades do(a) {i} são:")
     for j in animais[i]["necessidades"]:
@@ -30,6 +26,8 @@ def imprimeNecessidades(animais, animaisEscolhidos, recemNascido):
 def verificaAnimais(animaisEscolhidos):
   animais = ["cachorro", "gato", "hamster", "peixe"]
   animaisInvalidos = []
+
+  # coloca os animais invalidos na lista
   for i in animaisEscolhidos:
     if i not in animais:
       animaisInvalidos.append(i)
