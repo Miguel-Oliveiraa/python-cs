@@ -1,11 +1,15 @@
 def verificaInimigos(animais, animaisEscolhidos):
   inimigos = False
   for i in animaisEscolhidos:
-    for j in animais[i]["inimigos"]:
-      if j in animaisEscolhidos:
-        inimigos = True
-        print(
-          f"Sérgio, o(a) {i} tem o(a) {j} como inimigo. Não é possível adotá-los juntos, a não ser que sejam recém nascidos")
+      for j in animaisEscolhidos:
+          if j in animais[i]["inimigos"]:
+              print(f"Sérgio, o(a) {i} tem o(a) {j} como inimigo. Não é possível adotá-los juntos, a não ser que sejam recém nascidos")
+              inimigos = True
+  #   for j in animais[i]["inimigos"]:
+  #     if j in animaisEscolhidos:
+  #       inimigos = True
+  #       print(
+  #         f"Sérgio, o(a) {i} tem o(a) {j} como inimigo. Não é possível adotá-los juntos, a não ser que sejam recém nascidos")
   return inimigos
 
 
