@@ -43,11 +43,12 @@ def main():
     "peixe": {"inimigos": ["gato"], "necessidades": ["aquário", "filtro", "ração"]},
   }
 
+  # recebe os inputs e verifica eles
   animaisEscolhidos = input().split(" e ")
   recemNascido = True if input() == "sim" else False
   animaisInvalidos = verificaAnimais(animaisEscolhidos)
 
-  if animaisInvalidos == []:
+  if animaisInvalidos:
     if recemNascido:
       imprimeNecessidades(animais, animaisEscolhidos, recemNascido)
     else:
