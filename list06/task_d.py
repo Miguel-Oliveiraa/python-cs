@@ -1,10 +1,18 @@
 def verificaInimigos(animais, animaisEscolhidos):
   inimigos = False
+
+  # itera sobre cada animal
   for i in animaisEscolhidos:
+
+      # itera para cada animal
       for j in animaisEscolhidos:
+
+          # caso o segundo animal seja inimigo do primeiro
           if j in animais[i]["inimigos"]:
               print(f"Sérgio, o(a) {i} tem o(a) {j} como inimigo. Não é possível adotá-los juntos, a não ser que sejam recém nascidos")
               inimigos = True
+
+
   return inimigos
 
 
