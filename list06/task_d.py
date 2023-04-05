@@ -49,14 +49,14 @@ def main():
   animaisInvalidos = verificaAnimais(animaisEscolhidos)
 
   if animaisInvalidos:
+    for i in animaisInvalidos:
+      print(f"Sérgio, o animal {i} não estava nas suas potenciais escolhas, logo ele não pode ser analisado.")
+  else:
     if recemNascido:
       imprimeNecessidades(animais, animaisEscolhidos, recemNascido)
     else:
       if not verificaInimigos(animais, animaisEscolhidos):
         imprimeNecessidades(animais, animaisEscolhidos, recemNascido)
-  else:
-    for i in animaisInvalidos:
-      print(f"Sérgio, o animal {i} não estava nas suas potenciais escolhas, logo ele não pode ser analisado.")
 
 
 main()
