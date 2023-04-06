@@ -38,15 +38,19 @@ def main():
   gatoInicial = input()
   gatoAlvo = input()
 
+  # se o alvo for inimigo ou amigo do gato inicial
   if gatoAlvo in relacionamentos[gatoInicial]["inimigos"]:
     print(f"Eu não falo com {gatoAlvo}! Mas fico feliz por ter sido edificado com essa fofoca")
   elif gatoAlvo in relacionamentos[gatoInicial]["amigos"]:
     print("Fofoca? Aceito. Vou contar agora mesmo, miau miau")
-  else:
-    rotas = verificaRotas(gatoInicial, gatoAlvo, relacionamentos)
-    rotas.sort(key=len)
 
+  else:
+    # verifica todas possiveis rotas
+    rotas = verificaRotas(gatoInicial, gatoAlvo, relacionamentos)
+
+    # imprime a mensagem de acordo com a menor rota
     if rotas:
+      rotas.sort(key=len)
       mensagem = ""
       for i in range(len(rotas[0]) - 1):
         if i == 0:
