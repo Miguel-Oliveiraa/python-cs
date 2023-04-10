@@ -1,21 +1,20 @@
 def vaquinha(quantidade, energia, energiaGasta):
-  energiaGastaparcial = int(quantidade)
-  energiaGasta += min(energiaGastaparcial, energia)
-  energia -= energiaGastaparcial
+  energiaGasta += min(int(quantidade), energia)
+  energia -= int(quantidade)
   energia = max(energia, 0)
   print("Brinquedo da vaquinha! Vou chacoalhar")
-  return (energia, energiaGasta)
+  return energia, energiaGasta
 
 
 def chupeta(quantidade, energia, energiaGasta):
-  maximapassiva = energia
-  energiaGastaparcial = min(int(quantidade), maiorEnergia)
-  energia = max(energia - 5, energiaGastaparcial)
+  energiaInicial = energia
+  menorEnergia = min(int(quantidade), maiorEnergia)
+  energia = max(energia - 5, menorEnergia)
   energia = min(energia, maiorEnergia)
-  energiaGastaparcial = maximapassiva - energia
-  energiaGasta += (energiaGastaparcial + abs(energiaGastaparcial)) / 2
+  menorEnergia = energiaInicial - energia
+  energiaGasta += (menorEnergia + abs(menorEnergia)) / 2
   print("Minha pipeta! Vou morder")
-  return (energia, energiaGasta)
+  return energia, energiaGasta
 
 
 def gotinha(quantidade, energia, energiaGasta):
@@ -24,7 +23,7 @@ def gotinha(quantidade, energia, energiaGasta):
   energiaGastaparcial = energiazinha - energia
   energiaGasta += energiaGastaparcial
   print("Meu preferido! Faz barulho e mordo")
-  return (energia, energiaGasta)
+  return energia, energiaGasta
 
 
 def bolinha(quantidade, energia, energiaGasta):
@@ -33,7 +32,7 @@ def bolinha(quantidade, energia, energiaGasta):
   energia -= energiaGastaparcial
   energia = max(energia, 0)
   print("ZOOOOOOOOOOOOOOOOOM")
-  return (energia, energiaGasta)
+  return energia, energiaGasta
 
 
 def osso(quantidade, energia, energiaGasta):
@@ -41,7 +40,7 @@ def osso(quantidade, energia, energiaGasta):
   energia += energiaGastaparcial
   energia = min(energia, maiorEnergia)
   print("Pausa para roer")
-  return (energia, energiaGasta)
+  return energia, energiaGasta
 
 
 def comida(quantidade, energia, energiaGasta):
@@ -53,22 +52,23 @@ def comida(quantidade, energia, energiaGasta):
   energiaGastaparcial = maximapassiva - energia
   energiaGasta += (energiaGastaparcial + energiaGastaparcial * (-1) ** (len(quantidade) + 1)) / 2
   print(f"Uhh, {quantidade} deve ser comestível")
-  return (energia, energiaGasta)
+  return energia, energiaGasta
 
 
 energia = int(input())
-energiaGasta = 0
-maiorEnergia = energia
+status = {"energia": energia, "energiaGasta": 0}
+maiorEnergia = status["energia"]
 
 funcoes = {"Vaquinha": vaquinha, "Zé Gotinha": gotinha, "Chupeta": chupeta, "Bolinha": bolinha, "Osso": osso,
            "Comida": comida}
-while energia > 0 and energiaGasta < 100:
+
+while status["energia"] > 0 and status["energiaGasta"] < 100:
   brincadeira, quantidade = input().split(": ")
-  (energia, energiaGasta) = funcoes[brincadeira](quantidade, energia, energiaGasta)
+  status["energia"], status["energiaGasta"] = funcoes[brincadeira](quantidade, status["energia"], status["energiaGasta"])
 
-energiaGasta = min(energiaGasta, 100)
+status["energiaGasta"] = min(status["energiaGasta"], 100)
 
-num_a = 'a' * max(int(energiaGasta / 10), 1)
+num_a = 'a' * max(int(status["energiaGasta"] / 10), 1)
 
 print(
-  f"Mamãe chegou! Gastei {energiaGasta:.0f} pontos da minha energia e estou c{num_a}nsada, mas vou correr para seus braços!")
+  f"Mamãe chegou! Gastei {status['energiaGasta']:.0f} pontos da minha energia e estou c{num_a}nsada, mas vou correr para seus braços!")
