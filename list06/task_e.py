@@ -47,28 +47,26 @@ def comida(quantidade, energia, energiaGasta):
   maximapassiva = energia
   energiaGastaparcial = len(quantidade)
   energia += energiaGastaparcial * (-1) ** energiaGastaparcial
-  energia = min(energia, maiorEnergia)
-  energia = max(energia, 0)
+  energia = max(min(energia, maiorEnergia), 0)
   energiaGastaparcial = maximapassiva - energia
   energiaGasta += (energiaGastaparcial + energiaGastaparcial * (-1) ** (len(quantidade) + 1)) / 2
   print(f"Uhh, {quantidade} deve ser comestível")
   return energia, energiaGasta
 
 
+
+dictFuncoes = {"Vaquinha": vaquinha, "Zé Gotinha": gotinha, "Chupeta": chupeta, "Bolinha": bolinha, "Osso": osso,
+               "Comida": comida}
+
 energia = int(input())
 status = {"energia": energia, "energiaGasta": 0}
 maiorEnergia = status["energia"]
 
-funcoes = {"Vaquinha": vaquinha, "Zé Gotinha": gotinha, "Chupeta": chupeta, "Bolinha": bolinha, "Osso": osso,
-           "Comida": comida}
-
 while status["energia"] > 0 and status["energiaGasta"] < 100:
-  brincadeira, quantidade = input().split(": ")
-  status["energia"], status["energiaGasta"] = funcoes[brincadeira](quantidade, status["energia"], status["energiaGasta"])
+  acao, quantidade = input().split(": ")
+  status["energia"], status["energiaGasta"] = dictFuncoes[acao](quantidade, status["energia"], status["energiaGasta"])
 
 status["energiaGasta"] = min(status["energiaGasta"], 100)
+letrasA = 'a' * max(int(status["energiaGasta"] / 10), 1)
 
-num_a = 'a' * max(int(status["energiaGasta"] / 10), 1)
-
-print(
-  f"Mamãe chegou! Gastei {status['energiaGasta']:.0f} pontos da minha energia e estou c{num_a}nsada, mas vou correr para seus braços!")
+print(f"Mamãe chegou! Gastei {status['energiaGasta']:.0f} pontos da minha energia e estou c{letrasA}nsada, mas vou correr para seus braços!")
